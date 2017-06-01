@@ -1,7 +1,12 @@
 FROM continuumio/anaconda3
 MAINTAINER shotat
 
-RUN conda install py-xgboost
+# build-essentials
+RUN apt-get update
+RUN apt-get install build-essential
 
-RUN mkdir /work
-WORKDIR /work
+# python
+RUN conda update --all
+RUN conda install py-xgboost
+RUN pip install GPy
+RUN pip install gpyopt
